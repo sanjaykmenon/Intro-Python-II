@@ -1,6 +1,14 @@
 from room import Room
+from player import Playerfrom item import Item,Gold, Weapon, Rock, Dagger
+from string import capwords
+
 
 # Declare all the rooms
+
+north = 'Move North'
+south = 'Mouth South'
+east = 'Move East'
+west = 'Move West'
 
 room = {
     'outside':  Room("Outside Cave Entrance",
@@ -49,3 +57,9 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+
+def main():
+    player_name = input('What is your name, young Padawan?\n')
+    player = Player(player_name, room['outside'])
+    while not player.victory:
+        play_loop(player)
